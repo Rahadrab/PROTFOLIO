@@ -125,7 +125,7 @@ Navigated to standard WordPress REST API endpoint (`/wp-json/`). Confirmed immed
 - **GDPR Art. 9 concerns** — metadata exposure could contribute to profiling decisions
 - **Combining with REST API exposure** significantly increases overall attack surface
 
-**Status:** INFORMATIONAL — Analyst @h1_analyst_diablo closed as Informative (2026-03-18), noting `/wp-json/` exposure not inherently risky since same data publicly available via website; API only exposes sensitive/private data when authenticated; encouraged to keep submitting findings.
+**Status:** INFORMATIONAL — Analyst [REDACTED-ANALYST] closed as Informative (2026-03-18), noting `/wp-json/` exposure not inherently risky since same data publicly available via website; API only exposes sensitive/private data when authenticated; encouraged to keep submitting findings.
 
 ---
 
@@ -147,5 +147,5 @@ Response-body capture, diff/compare scripts, gobuster directory enumeration, JSO
 
 ---
 
-*Sanitized: target website name and specific URL paths removed. Full technical report available on request under NDA. Report submitted to HackerOne #3605213, closed as Informative by analyst @h1_analyst_diablo on 2026-03-18.*
+*Sanitized: target website name and specific URL paths removed. Full technical report available on request under NDA. Report submitted to [REDACTED-REPORT-ID], closed as Informative by analyst [REDACTED-ANALYST] on 2026-03-18.*
 

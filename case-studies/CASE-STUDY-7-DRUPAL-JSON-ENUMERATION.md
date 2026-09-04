@@ -1,18 +1,18 @@
-# Case Study 7 — Drupal Installer + JSON:API User Enumeration (Telstra Health VDP)
+# Case Study 7 — Drupal Installer + JSON:API User Enumeration (VDP Program)
 
 | Field | Value |
 |-------|-------|
 | **Severity** | P3 → P2 (upgraded during triage) |
 | **CWE** | CWE-200 (Exposure of Sensitive Information to Unauthorized Actor) / CWE-702 (Use of Dangerously Permissive Character Encoding) |
 | **Impact** | Admin portal exposure enabling brute-force credential attacks; user enumeration enabling reconnaissance, credential stuffing, and privilege escalation; reputational and financial business impact |
-| **Surface** | Public-facing Web Application (Telstra Health VDP program); 1800respect.org.au |
+| **Surface** | Public-facing Web Application (VDP program); [REDACTED-DOMAIN] |
 | **Status** | RESOLVED (13 Nov 2025) — Customer restricted leaked information; VDP program (no monetary reward but finding accepted and triaged) |
 
 ---
 
 ## Vulnerability 1: Drupal Installer Exposure
 
-**URL:** `https://1800respect.org.au/core/install.php`  
+**URL:** `https://[REDACTED-DOMAIN]/core/install.php`  
 **Type:** Administrative portal exposure / Misconfiguration  
 **VRT:** Other (initially P3, upgraded to P2 during triage)  
 
@@ -27,7 +27,7 @@ An attacker is able to identify an exposed portal and can then brute force crede
 - Can also cause reputational damage for the business due to a loss in confidence and trust by users
 
 **Steps to Reproduce:**
-1. Use a browser to navigate to the portal via the URL: `https://1800respect.org.au/core/install.php`
+1. Use a browser to navigate to the portal via the URL: `https://[REDACTED-DOMAIN]/core/install.php`
 2. The following are the functionalities of the admin portal:
    - **Drupal Installer (P3):** Public access to `/core/install.php` exposes an administrative interface. If protections fail, this could allow re‑installation or misconfiguration of the production site.
 
@@ -36,7 +36,7 @@ An attacker is able to identify an exposed portal and can then brute force crede
 HTTP/2 301
 date: Wed, 29 Oct 2025 05:54:35 GMT
 content-type: text/html
-location: https://1800respect.org.au/core/install.php
+location: https://[REDACTED-DOMAIN]/core/install.php
 cf-cache-status: DYNAMIC
 server: cloudflare
 cf-ray: 99606b47a9868321-SIN
@@ -60,7 +60,7 @@ cf-ray: 99606b4d2dca8321-SIN
 
 ## Vulnerability 2: JSON:API User Enumeration
 
-**URL:** `https://1800respect.org.au/jsonapi/user/user`  
+**URL:** `https://[REDACTED-DOMAIN]/jsonapi/user/user`  
 **Type:** Sensitive Data Exposure → User Enumeration  
 **VRT:** Sensitive Data Exposure → User Enumeration  
 **Priority:** P2 (upgraded from P3 during triage)  
@@ -82,22 +82,22 @@ Unauthenticated access to the `/jsonapi/user/user` endpoint allows an attacker t
 
 ### Finding 1: Drupal Installer Exposure
 
-1. **Discovery:** Navigated to `https://1800respect.org.au/core/install.php` in a standard browser
+1. **Discovery:** Navigated to `https://[REDACTED-DOMAIN]/core/install.php` in a standard browser
 2. **Confirmation:** HTTP 200 response with Drupal installer interface exposed, no authentication required
 3. **Risk:** Public access to admin portal enables brute-force credential attacks and potential admin-level backend access
 
 ### Finding 2: JSON:API User Enumeration
 
-1. **Discovery:** Navigated to `https://1800respect.org.au/jsonapi/user/user` in a standard browser
+1. **Discovery:** Navigated to `https://[REDACTED-DOMAIN]/jsonapi/user/user` in a standard browser
 2. **Confirmation:** Unauthenticated JSON response returned valid user accounts and IDs
 3. **Risk:** User enumeration enables reconnaissance for targeted attacks, credential stuffing, and privilege escalation
 
 ### Triaging Process
 
-- **29 Oct 2025:** rahat_rab submitted the finding via Bugcrowd
-- **01 Nov 2025:** Tal_Bugcrowd changed severity from P3 to P2 during triage
+- **29 Oct 2025:** [REDACTED-USERNAME] submitted the finding via [REDACTED-PLATFORM]
+- **01 Nov 2025:** [REDACTED-ANALYST] changed severity from P3 to P2 during triage
 - **01 Nov 2025:** Finding marked as Triaged; customer team to have closer look
-- **13 Nov 2025:** SRamay resolved the finding; team restricted the leaked information
+- **13 Nov 2025:** [REDACTED-ANALYST] resolved the finding; team restricted the leaked information
 - **Status:** RESOLVED
 
 ---
@@ -144,9 +144,9 @@ Unauthenticated access to the `/jsonapi/user/user` endpoint allows an attacker t
 
 ## Tooling
 
-curl commands for endpoint testing, response-body capture, screenshot capture — developed through manual verification. Verified both endpoints' access levels before and after remediation. Bugcrowd submission format followed for triage.
+curl commands for endpoint testing, response-body capture, screenshot capture — developed through manual verification. Verified both endpoints' access levels before and after remediation. [REDACTED-PLATFORM] submission format followed for triage.
 
 ---
 
-*Sanitized: target website name fully removed (1800respect.org.au context maintained for VDP program recognition). Full technical report and screenshots available in original Bugcrowd submission (submitted 29 Oct 2025). Report acknowledged by SRamay (13 Nov 2025): "Welcome to the program! Thanks for this finding — the team was able to restrict the leaked information." VDP program: no monetary reward but finding accepted and triaged.*
+*Sanitized: target website name fully removed ([REDACTED-DOMAIN] context maintained for VDP program recognition). Full technical report and screenshots available in original [REDACTED-PLATFORM] submission (submitted 29 Oct 2025). Report acknowledged by [REDACTED-ANALYST] (13 Nov 2025): "Welcome to the program! Thanks for this finding — the team was able to restrict the leaked information." VDP program: no monetary reward but finding accepted and triaged.*
 

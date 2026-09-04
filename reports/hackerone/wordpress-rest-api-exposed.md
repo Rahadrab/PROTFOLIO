@@ -1,26 +1,26 @@
-# HackerOne Report #3605213
+# REDACTED-PLATFORM Report [REDACTED-REPORT-ID]
 
 **Title:** WordPress REST API Publicly Exposed - Information Disclosure  
-**Program:** Arkose Labs Bounty  
-**Reporter:** rahad_rab  
+**Program:** [REDACTED-COMPANY] Bounty  
+**Reporter:** [REDACTED-USERNAME]  
 **Date Submitted:** March 14, 2026, 8:58pm UTC  
 **Status:** INFORMATIONAL  
-**Closed:** March 18, 2026, 12:23pm UTC by @h1_analyst_diablo
+**Closed:** March 18, 2026, 12:23pm UTC by [REDACTED-ANALYST]
 
 ---
 
 ## Vulnerability Summary
 
-The WordPress REST API endpoint (`/wp-json/`) is publicly accessible without authentication at `arkoselabs.com`. The full JSON response is visible to any visitor, without requiring login.
+The WordPress REST API endpoint (`/wp-json/`) is publicly accessible without authentication at `[REDACTED-DOMAIN]`. The full JSON response is visible to any visitor, without requiring login.
 
 **Steps to Reproduce:**
-1. Open browser and navigate to: `https://www.arkoselabs.com/wp-json/`
+1. Open browser and navigate to: `https://www.[REDACTED-DOMAIN]/wp-json/`
 2. Observe full JSON response without authentication
 3. Review exposed information (plugins, page IDs, authentication methods)
 
 **Directory Enumeration (Gobuster):**
 ```
-gobuster dir -u https://www.arkoselabs.com \
+gobuster dir -u https://www.[REDACTED-DOMAIN] \
 -w /mnt/tools/seclists/Discovery/Web-Content/URLs/urls-wordpress-3.3.1.txt \
 -b 403,404,400,401,402 \
 -r
@@ -58,7 +58,7 @@ The exposed REST API discloses the following security risks:
 - Combined with REST API exposure, significantly increases attack surface
 
 **Business Impact:**
-- Increased risk of targeted attacks on Arkose Labs website
+- Increased risk of targeted attacks on [REDACTED-COMPANY] website
 - Potential for plugin exploitation leading to site compromise
 - Reputation damage if site is compromised
 - Violation of security best practices (WordPress hardening guidelines)
@@ -67,7 +67,7 @@ The exposed REST API discloses the following security risks:
 
 ## Analyst Response
 
-**@h1_analyst_diablo** (March 18, 2026, 12:23pm UTC):
+**[REDACTED-ANALYST]** (March 18, 2026, 12:23pm UTC):
 > "Thank you for your report!
 > 
 > Exposing the /wp-json endpoint publicly is not inherently a security risk because it mainly exposes data that is already public. The majority of data exposed through WordPress' REST API is already publicly available through the website itself. For example, data like published posts, pages, categories, tags, and basic site information are visible to any visitor, whether they use the API or browse the site directly.
@@ -79,7 +79,7 @@ The exposed REST API discloses the following security risks:
 > We encourage you to keep submitting your findings, as your contributions help improve security awareness.
 > 
 > Kind regards,
-> @h1_analyst_diablo"
+> [REDACTED-ANALYST]"
 
 ---
 
